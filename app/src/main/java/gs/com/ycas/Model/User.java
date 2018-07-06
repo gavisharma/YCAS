@@ -1,8 +1,6 @@
-package gs.com.ycas;
+package gs.com.ycas.Model;
 
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
 
 public class User {
     public String uid, email, name, contact, language, type;

@@ -1,4 +1,4 @@
-package gs.com.ycas;
+package gs.com.ycas.Model;
 
 import java.util.ArrayList;
 
