@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gs.com.ycas">
 
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,11 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".HomeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".LauncherActivity"
+            android:name=".Activity.LauncherActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +22,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:screenOrientation="portrait" />
+
         <activity android:name=".BaseActivity" />
-        <activity android:name=".LandingActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ForgotPasswordActivity"></activity>
+
+        <activity android:name=".Activity.LandingActivity" />
+
+        <activity android:name=".Activity.LoginActivity" />
+
+        <activity android:name=".Activity.RegisterActivity" />
+
+        <activity android:name=".Activity.ForgotPasswordActivity" />
+
     </application>
 
 </manifest>

@@ -1,10 +1,13 @@
-package gs.com.ycas;
+package gs.com.ycas.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.Toast;
+
+import gs.com.ycas.BaseActivity;
+import gs.com.ycas.R;
 
 public class LauncherActivity extends BaseActivity {
 
@@ -12,6 +15,9 @@ public class LauncherActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         final Context context = this;
         Thread delay = new Thread(){
             public  void run(){

@@ -1,4 +1,4 @@
-package gs.com.ycas;
+package gs.com.ycas.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +20,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import gs.com.ycas.BaseActivity;
+import gs.com.ycas.Model.User;
+import gs.com.ycas.Model.Volunteer;
+import gs.com.ycas.R;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -36,6 +42,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         // Views
         mEmailField = findViewById(R.id.field_email);
         mPasswordField = findViewById(R.id.field_password);
@@ -95,7 +104,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 ArrayList<User> volunteers = new ArrayList<User>();
                 User loggedInUser = (User) dataSnapshot.child(getUid()).getValue(User.class);
                 if (loggedInUser.type.equals("volunteer")){
-                    volunteerUser = true;
+                    //volunteerUser = true;
                 }
                 for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
                     User user = userSnapshot.getValue(User.class);
