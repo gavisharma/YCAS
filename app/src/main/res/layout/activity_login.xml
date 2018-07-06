@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LandingActivity">
+
+    <EditText
+        android:id="@+id/field_email"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@id/field_password"
+        android:layout_marginHorizontal="16dp"
+        android:background="#50000000"
+        android:gravity="center"
+        android:hint="@string/strEml"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorLink="@color/common_google_signin_btn_text_dark_default" />
+
+    <EditText
+        android:id="@+id/field_password"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
+        android:layout_above="@id/button_sign_in"
+        android:background="#50000000"
+        android:gravity="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+
+        android:hint="@string/strPswd"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button_sign_up"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/button_sign_in"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/strReg"
+        android:textAllCaps="@bool/allCaps"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <Button
+        android:id="@+id/button_reset_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_sign_up"
+        android:background="#00000000"
+        android:text="@string/resetPass"
+        android:textAllCaps="@bool/allCaps"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <Button
+        android:id="@+id/button_sign_in"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:text="@string/strLgn"
+        android:textAllCaps="@bool/allCaps"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">YCAS</string>
+    <string name="strUser">I am Visually impaired</string>
+    <string name="strVolntr">I am Volunteer</string>
+
+    <string name="strReg">Click here to REGISTER</string>
+    <string name="strLgn">Click here to LOGIN</string>
+    <string name="resetPass">Forgot Password??? Click here to reset</string>
+
+    <string name="strEml">Enter email</string>
+    <string name="strName">Enter name</string>
+    <string name="strLanguage">Enter language</string>
+    <string name="strContact">Enter phone</string>
+    <string name="strPswd">Enter password</string>
+    <string name="strRegEml">Enter the registered email...</string>
+    <string name="resetPassLink">Click to receive password reset link</string>
+
+</resources>
