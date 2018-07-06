@@ -36,6 +36,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         // Views
         mEmailField = findViewById(R.id.field_email);
         mPasswordField = findViewById(R.id.field_password);
@@ -93,10 +94,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<User> volunteers = new ArrayList<User>();
-                User loggedInUser = (User) dataSnapshot.child(getUid()).getValue(User.class);
-                if (loggedInUser.type.equals("volunteer")){
-                    volunteerUser = true;
-                }
                 for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
                     User user = userSnapshot.getValue(User.class);
                     if (user != null && !user.uid.equals(getUid()) && !user.type.equalsIgnoreCase("blind")){
@@ -105,6 +102,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     }
                 }
                 Volunteer.getInstance().setVolunteers(volunteers);
+                User currentUser = dataSnapshot.child(getUid()).getValue(User.class);
+                if (currentUser.type.equalsIgnoreCase("blind")){
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    Toast.makeText(LoginActivity.this, "User: "+username, Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), VolunteerHomeActivity.class));
+                    Toast.makeText(LoginActivity.this, "Volunteer: "+username, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
             @Override
             public void onCancelled(DatabaseError error) {
@@ -112,15 +119,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 Log.w("TAG", "Failed to read value.", error.toException());
             }
         });
-        if (volunteerUser){
-            //Code snippet for Volunteer User
-        }
-        else {
-            //Code snippet for Blind user
-        }
-        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-        Toast.makeText(LoginActivity.this, "User: "+username, Toast.LENGTH_SHORT).show();
-        finish();
     }
 
     private String usernameFromEmail(String email) {
@@ -161,9 +159,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (i == R.id.button_sign_in) {
             signIn();
         } else if (i == R.id.button_sign_up) {
-            startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+            Intent nextIntent = new Intent(getApplicationContext(), RegisterActivity.class);
+            nextIntent.putExtra(KEY_OPERATOR, getIntent().getStringExtra(KEY_OPERATOR));
+            startActivity(nextIntent);
+            finish();
         } else if (i == R.id.button_reset_password) {
             startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
+            finish();
         }
     }
 }

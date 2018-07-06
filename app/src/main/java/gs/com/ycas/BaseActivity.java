@@ -11,6 +11,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class BaseActivity extends AppCompatActivity {
 
+    public static String USER_OPERATOR      = "user";
+    public static String KEY_OPERATOR       = "operator";
+    public static String VOLUNTEER_OPERATOR = "volunteer";
+
     private ProgressDialog mProgressDialog;
 
     public void showProgressDialog() {
@@ -46,6 +50,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
+
+    public void signOut(){
+        getmAuth().signOut();
     }
 
 }

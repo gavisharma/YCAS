@@ -75,7 +75,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         regUser.contact = fieldContact.getText().toString();
         regUser.language = fieldLanguage.getText().toString();
         String password = fieldPassword.getText().toString();
-        regUser.type = "";
+        regUser.type = getIntent().getStringExtra(KEY_OPERATOR);
 
         getmAuth().createUserWithEmailAndPassword(regUser.email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

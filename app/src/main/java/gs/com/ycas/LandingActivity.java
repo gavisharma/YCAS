@@ -22,14 +22,14 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        String operateAs;
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         if (view.getId() == btnUser.getId()){
-            operateAs = "User";
+            intent.putExtra(KEY_OPERATOR, USER_OPERATOR);
         }
         else if (view.getId() == btnVolunteer.getId()){
-            operateAs = "Volunteer";
+            intent.putExtra(KEY_OPERATOR, VOLUNTEER_OPERATOR);
         }
-        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        startActivity(intent);
         finish();
     }
 }
